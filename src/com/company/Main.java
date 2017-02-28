@@ -47,10 +47,7 @@ public class Main {
 
   public static void main(String[] args) {
     // Get the unsolved cube
-    //GetCubeInput gci = new GetCubeInput();
-    //ValidateCube vc = new ValidateCube();
-    //MoveSequences cube = new MoveSequences();
-    //Cross cross = new Cross();
+
     char[][][] cube = GetCubeInput.getCubeInput();
 
     // Determine if the cube scramble is a valid cube
