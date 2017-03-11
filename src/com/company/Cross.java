@@ -69,12 +69,14 @@ public class Cross {
       // Solve cross
 
       // Identify the edge pieces
-      // Why are these all returning nulls wtf
+      // TODO: figure out way to implement something that ignore previously stored edges
       int[] firstEdge = findEdgePieces(crossCube,1);
       int[] secondEdge = findEdgePieces(crossCube,2);
       int[] thirdEdge = findEdgePieces(crossCube,3);
       int[] fourthEdge = findEdgePieces(crossCube,4);
-      System.out.println(firstEdge[0]);
+      for(int i = 0; i < firstEdge.length; i++) {
+        System.out.print(firstEdge[i]);
+      }
 
 
 
@@ -93,7 +95,7 @@ public class Cross {
         for (int col = 0; col < cube[side][row].length; col++) {
           // Determine if the currentChar is a white edge piece
           char currentChar = cube[side][row][col];
-          if ((currentChar == 'w') && isEdgePiece(row, col) && (whichEdge == whiteEdges)) {
+          if ((currentChar == 'w') && isEdgePiece(row, col)) {
             // The char is indeed a white edge piece so now we identify its adjacent
             int[] edge = {side,row,col};
             int[] adjacent = adjacent(side,row,col);
@@ -105,7 +107,7 @@ public class Cross {
         }
       }
     }
-    return new int[]{2,1};
+    return null;
   }
   /* This method just checks if the row and col values logically yield an edge piece */
   private static boolean isEdgePiece(int row, int col) {
@@ -136,8 +138,9 @@ public class Cross {
     int[] white = {2,1,2,1,2,1,2,1};
     int[] yellow = {0,1,0,1,0,1,0,1};
     int[] GreenBlueRedOrange = {2,1,1,2,1,0,0,1};
+   // System.out.println("side is: "+side);
 
-    return  (side == 0) ? white : (side == 1) ? yellow : GreenBlueRedOrange;
+    return  (side == 0) ? white : (side == 2) ? yellow : GreenBlueRedOrange;
    /* switch (side) {
       case 0:return white;
       case 2:return yellow;
