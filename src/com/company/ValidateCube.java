@@ -3,10 +3,10 @@ package com.company;
 /**
  Created by Anthony Vardaro 2/17/2017
  This method checks for:
- Whether the input doesn't contain abstract chars (ex: u, k, q)
- Whether the input has no repeated center piece
- Whether the input has 4 edge pieces for each color
- Whether the input has 4 corner pieces for each color
+ 1. Whether the input doesn't contain abstract chars (ex: u, k, q)
+ 2. Whether the input has no repeated center piece
+ 3. Whether the input has 4 edge pieces for each color
+ 4. Whether the input has 4 corner pieces for each color
  */
 public class ValidateCube {
   public static boolean check(char[][][] cube) {
@@ -32,7 +32,8 @@ public class ValidateCube {
           // Currently tested char
           char currentChar = cube[depth][row][col];
 
-          // The first test checks to see if the input contains all valid chars(r b g o w y) and if each color has the right amount of occurrences(9)
+          // The first test checks to see if the input contains all valid chars(r b g o w y) and if each color has the right amount
+          // of occurrences(9)
           // If the currentChar is invalid, validCube() returns false.
           if (currentChar != 'w' &&
             currentChar != 'g' &&
@@ -45,6 +46,7 @@ public class ValidateCube {
           }
 
           // Start building string for Test #2
+          // cube[color][1][1] yields the face centerpiece
           if (row == 1 && col == 1) {
             centerpieceTest = sb.append(currentChar).toString();
           }

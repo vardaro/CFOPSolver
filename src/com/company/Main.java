@@ -43,41 +43,43 @@ F' U' L2 R2 U B2 F2 U B2 D2 R2 F' D2 L2 D' R' B2 D L F
  */
 package com.company;
 
+import static com.company.Algorithms.*;
+
 public class Main {
 
   public static void main(String[] args) {
-    // Get the unsolved cube
 
-    char[][][] cube = GetCubeInput.getCubeInput();
+    // Get the unsolved cube
+    char[][][] inputCube = GetCubeInput.getCubeInput();
 
     // Determine if the cube scramble is a valid cube
+    if (ValidateCube.check(inputCube)) {
 
-
-    if (ValidateCube.check(cube)) {
       // Solve Cube
-      currentCube(cube);
-      MoveSequences.move(cube, "R", 1);
-      /*Cross.solve(cube);
-      FirstTwoLayers.firstPair(cube);
+      currentCube(inputCube);
+      //MoveSequences cube = new MoveSequences(inputCube);
+      Cross.solve(inputCube);
+      currentCube(inputCube);
+      /*FirstTwoLayers.firstPair(cube);
       FirstTwoLayers.secondPair(cube);
       FirstTwoLayers.thirdPair(cube);
       FirstTwoLayers.fourthPair(cube);
       LastLayer.OLL(cube);
       LastLayer.PLL(cube);*/
-      currentCube(cube);
+
     } else {
       System.out.println("\nInvalid cube\nTry Again");
     }
   }
-  /*
-    This method is for testing purposes only. It prints the current cube
-   */
+
+  //This method is for testing purposes only. It prints the current cube
   private static void currentCube(char[][][] cube) {
     System.out.println("Current cube:");
     for(int i = 0; i < cube.length; i++) {
       System.out.println(cube[i][0]);
       System.out.println(cube[i][1]);
       System.out.println(cube[i][2]);
+      System.out.println();
     }
   }
 }
